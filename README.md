@@ -242,6 +242,7 @@ CSS 的文件指纹设置
 ***
 ### webpack优化策略
 #### 热更新技术
+[Webpack’s Hot Module Replacement Feature Explained](https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986)
 #### sourcemap
 #### 分包
 #### tree-shaking
