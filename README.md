@@ -242,7 +242,19 @@ CSS 的文件指纹设置
 ***
 ### webpack优化策略
 #### 热更新技术
-[Webpack’s Hot Module Replacement Feature Explained](https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986)
+参考：  
+- [Webpack’s Hot Module Replacement Feature Explained](https://blog.bitsrc.io/webpacks-hot-module-replacement-feature-explained-43c13b169986)
+
+![](https://github.com/kongyufei5039/webpack-docs/blob/master/images/hot-module-replacement.png)  
+
+模块热替换(HMR - hot module replacement)功能会在应用程序运行过程中，替换、添加或删除模块，而无需重新加载整个页面。通过在 Webpack-dev-Server 内创建一个 HMR 服务器，该服务器通过 websocket 与浏览器中的 HMR runtime 通信实现热更新。
+交换模块过程如下：
+- 第一次构建应用程序时，Webpack 生成一个 manifest 文件。manifest 包含一个 compilation hash 和所有的 updated chunk 列表。Webpack 将 HMR runtime 注入到生成的 bundle.js 文件中。
+- 保存文件更改，将被 Webpack 检测到。
+- Webpack 编译器将使用这些更改重新构建应用程序，创建一个新的 manifest 文件并与旧的文件进行比较。这个过程也称为热更新。
+- 热更新将发送到 HMR 服务器，该服务器将向 HMR runtime 发送更新。
+- HMR runtime 下载解压热更新并使用适当的加载程序来处理更改。如果你修改了 CSS，那么 CSS loader 或 Style loader 将被调用。如果 JavaScript 代码发生了变化，那么通常会调用 Babel loader。
+
 #### sourcemap
 #### 分包
 #### tree-shaking
